@@ -1,0 +1,170 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  color: black;
+  font-family: tahoma;
+}
+
+.items ul {
+  padding-top: 20px;
+  position: relative;
+}
+.items li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 20px 5px 0 5px;
+}
+
+.items li::before, .items li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 50%;
+  height: 45px;
+  z-index: -1;
+  border-top: 1px solid red;
+}
+
+.items li::after {
+  border-left: 1px solid green;
+  left: 50%;
+  right: auto;
+}
+
+.items li:only-child::after, .items li:only-child::before {
+  display: none;
+}
+
+.items li:only-child {
+  padding-top: 0;
+}
+
+.items li:first-child::before, .items li:last-child::after {
+  border: 0 none;
+}
+.items li:last-child::before {
+  border-right: 1px solid blue;
+  border-radius: 0 5px 0 0;
+}
+
+.items li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+.items ul ul::before {
+  content: '';
+  border-left: 1px solid magenta;
+  z-index: -1;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  width: 0;
+}
+
+.items li a {
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.items li a:hover {
+  background-color: #EEE;
+}
+
+
+.items li a+a {
+  position: relative;
+  margin-bottom: 12px;
+}
+.items li a:first-child {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.items li > a:not(:only-child)::after{
+  content: '';
+  position: absolute;
+  border-right: 1px solid pink;
+  top: 20px;
+  height: 20px;
+  width: 0;
+  left: 50%;
+  z-index: -1;
+}
+
+.items li > a:not(:only-of-type):not(:last-of-type)::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: auto;
+  width: 100%;
+  border-top: 1px solid indigo;
+}
+
+.items li > a:last-of-type:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  right: auto;
+  width: 100%;
+  border-top: 1px solid indigo;
+}
+</style>
+/* Navigation
+--------------------------------------------------------------------------------------------------------------- */
+nav ul, nav ol{margin:0; padding:0; list-style:none;}
+
+#mainav, #breadcrumb, .sidebar nav{line-height:normal;}
+#mainav .drop::after, #mainav li li .drop::after, #breadcrumb li a::after, .sidebar nav a::after{position:absolute; font-family:"FontAwesome"; font-size:10px; line-height:10px;}
+
+/* Top Navigation */
+#mainav{position:relative; margin-bottom:-30px; padding:0; z-index:999;}
+#mainav ul{text-transform:uppercase;}
+#mainav ul ul{z-index:9999; position:absolute; width:180px; text-transform:none; text-align:left;}
+#mainav ul ul ul{left:180px; top:0;}
+#mainav li{display:block; float:left; position:relative; margin:0; padding:0;}
+#mainav li:last-child{margin-right:0;}
+#mainav li li{width:100%; margin:0;}
+#mainav li a{display:block; padding:20px;}
+#mainav li li a{border:solid; border-width:0 0 1px 0;}
+#mainav .drop{padding-left:15px;}
+#mainav li li a, #mainav li li .drop{display:block; margin:0; padding:10px 15px;}
+#mainav .drop::after, #mainav li li .drop::after{content:"\f0d7";}
+#mainav .drop::after{top:25px; left:5px;}
+#mainav li li .drop::after{top:15px; left:5px;}
+#mainav ul ul{visibility:hidden; opacity:0;}
+#mainav ul li:hover > ul{visibility:visible; opacity:1;}
+
+#mainav form{display:none; margin:0; padding:0;}
+#mainav form select, #mainav form select option{display:block; cursor:pointer; outline:none;}
+#mainav form select{width:100%; padding:5px; border:none;}
+#mainav form select option{margin:5px; padding:0; border:none;}
+
+/* Breadcrumb */
+#breadcrumb{padding:150px 0 30px;}
+#breadcrumb ul{margin:0; padding:0; list-style:none; text-transform:uppercase;}
+#breadcrumb li{display:inline-block; margin:0 6px 0 0; padding:0;}
+#breadcrumb li a{display:block; position:relative; margin:0; padding:0 12px 0 0; font-size:12px;}
+#breadcrumb li a::after{top:4px; right:0; content:"\f101";}
+#breadcrumb li:last-child a{margin:0; padding:0;}
+#breadcrumb li:last-child a::after{display:none;}
+#breadcrumb .heading{margin:0; font-size:2rem;}
+
+/* Sidebar Navigation */
+.sidebar nav{display:block; width:100%;}
+.sidebar nav li{margin:0 0 3px 0; padding:0;}
+.sidebar nav a{display:block; position:relative; margin:0; padding:5px 10px 5px 15px; text-decoration:none; border:solid; border-width:0 0 1px 0;}
+.sidebar nav a::after{top:9px; left:5px; content:"\f101";}
+.sidebar nav ul ul a{padding-left:35px;}
+.sidebar nav ul ul a::after{left:25px;}
+.sidebar nav ul ul ul a{padding-left:55px;}
+.sidebar nav ul ul ul a::after{left:45px;}
